@@ -41,7 +41,7 @@ public class RSAKeys {
  
   
   /**
-   * n = p * q.
+   * n = p * q
    * @return
    */
   public BigInteger get_n(){
