@@ -81,7 +81,7 @@ public class RSAKeys {
   /**
    * private key(n,d)
    * 
-   * @return
+   * @return d 
    */
   public BigInteger get_d(){
     d = get_e().modInverse(getphi_n());
