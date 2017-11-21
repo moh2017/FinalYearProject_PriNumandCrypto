@@ -30,8 +30,9 @@ public class RSAKeys {
   
   public BigInteger getq(){
     do{
-      
-    }while();
+      q = new BigInteger(bit_length/2,10,rand);
+    }while(q.compareTo(p) == 0);
+    return q;
   }
 }
 
