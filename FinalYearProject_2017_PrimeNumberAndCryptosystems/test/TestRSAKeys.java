@@ -1,11 +1,11 @@
 import static org.junit.Assert.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import java.math.BigInteger;
 
-/**
- * 
- */
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * @author Mahmoud
@@ -13,16 +13,31 @@ import org.junit.Test;
  */
 public class TestRSAKeys {
 
-  RSAKeys key;
+  RSAKeys testKey;
+  BigInteger test;
+  int bit_Len = 512;
+  
+  @Rule
+  // with the help of this rule thrown exception can be asserted.
+  public final ExpectedException exception = ExpectedException.none();
+  
   /**
-   * @throws java.lang.Exception
+   * Setup before running the test.
+   * 
+   * @throws java.lang.Exception throws language exception if it cannot be executed.
    */
   @Before
-  public void setUp() throws Exception {}
-
+  public void setUp() throws Exception {
+testKey = new RSAKeys(bit_Len); 
+  }
+  
+  /**
+   * Test if the RSAKeys constructor is created.
+   */
   @Test
   public void test() {
-    fail("Not yet implemented");
+    RSAKeys temp = testKey;
+    assertEquals("Test 1: there is RSAKeys con ", temp, testKey);
   }
 
 }
