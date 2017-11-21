@@ -50,7 +50,7 @@ public class RSAKeys {
   }
   
   /**
-   * Phi_n = p-1 * q-1.
+   * Phi_n = p-1 * q-1
    * 
    * @return
    */
