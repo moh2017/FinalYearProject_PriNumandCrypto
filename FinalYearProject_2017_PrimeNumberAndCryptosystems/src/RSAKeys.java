@@ -35,16 +35,17 @@ public class RSAKeys {
   public BigInteger get_q(){
     do{
       q = new BigInteger(bit_length/2,10,rand);
-    }while(q.compareTo(p) == 0);
+    }while(q.compareTo(get_p()) == 0);
     return q;
   }
+ 
   
   /**
-   * n = p * q
+   * n = p * q.
    * @return
    */
   public BigInteger get_n(){
-    n = p.multiply(q);
+    n = get_p().multiply(get_q());
     return n;
   }
   
@@ -53,9 +54,9 @@ public class RSAKeys {
    * 
    * @return
    */
-  public BigInteger getPhi_n(){
-    phi_n = p.subtract(BigInteger.ONE)
-        .multiply(q.subtract(BigInteger.ONE));
+  public BigInteger getphi_n(){
+    phi_n = get_p().subtract(BigInteger.ONE)
+        .multiply(get_q().subtract(BigInteger.ONE));
     return phi_n;
   }
   
@@ -66,12 +67,21 @@ public class RSAKeys {
    */
   public BigInteger get_e(){
     do{
-      e = new BigInteger(phi_n.bitLength(),rand);
+      e = new BigInteger(getphi_n().bitLength(),rand);
     }while(e.compareTo(BigInteger.ONE) <= 0
-        || e.compareTo(phi_n) >= 0
-        || !e.gcd(phi_n).equals(BigInteger.ONE));
+        || e.compareTo(getphi_n()) >= 0
+        || !e.gcd(getphi_n()).equals(BigInteger.ONE));
     
     return e;
+  }
+  
+  /**
+   * 
+   * @return
+   */
+  public BigInteger get_d(){
+    d = get_e().modInverse(getphi_n());
+    return d;
   }
   
 }
