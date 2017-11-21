@@ -63,6 +63,9 @@ public class RSAKeys {
   /**
    * Randomly choose e as long as e > 0 
    * Or e < phi_n 
+   * 
+   * public key (n,e)
+   * 
    * @return
    */
   public BigInteger get_e(){
@@ -76,6 +79,7 @@ public class RSAKeys {
   }
   
   /**
+   * private key(n,d)
    * 
    * @return
    */
